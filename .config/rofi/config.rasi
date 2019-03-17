@@ -1,0 +1,8 @@
+configuration {
+	modi: "windowcd,drun,run";
+	terminal: "termite";
+	theme: "custom";
+	sidebar-mode: true;
+	show-icons: true;
+	columns: 3;
+}

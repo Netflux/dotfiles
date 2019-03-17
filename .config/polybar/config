@@ -1,0 +1,141 @@
+[colors]
+background = #1f2226
+background-alt = #292e33
+foreground = #c3cfd9
+foreground-alt = #98a6b3
+
+
+[bar/topbar]
+width = 100%
+height = 30
+padding-left = 2
+padding-right = 2
+module-margin = 1
+line-size = 2
+
+cursor-click = pointer
+font-0 = tcherry:size=10;2
+font-1 = WunconSiji;2
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+modules-left = rofi bspwm
+modules-center = xwindow
+modules-right = wireless-network wired-network pulseaudio battery date info powermenu
+tray-position = right
+
+
+[module/rofi]
+type = custom/text
+
+content = 
+
+click-left = rofi -show drun
+
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %name%
+label-focused-padding = 2
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.foreground-alt}
+
+label-occupied = %name%
+label-occupied-padding = 2
+
+label-urgent = %name%
+label-urgent-padding = 2
+
+label-empty =
+
+
+[module/xwindow]
+type = internal/xwindow
+
+label-maxlen = 100
+
+
+[module/wireless-network]
+type = internal/network
+
+interface = ${env:WIRELESS_NETWORK_INTERFACE}
+
+format-connected = <ramp-signal> <label-connected>
+label-connected = %signal%
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+
+
+[module/wired-network]
+type = internal/network
+
+interface = ${env:WIRED_NETWORK_INTERFACE}
+
+format-connected =  <label-connected>
+label-connected = %linkspeed%
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+format-muted =  <label-muted>
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+
+[module/battery]
+type = internal/battery
+
+battery = BAT0
+adapter = AC0
+
+format-charging =  <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full =  <label-full>
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+
+
+[module/date]
+type = internal/date
+
+date = %d/%m/%Y
+time = %I:%M%p 
+label =  %time%   %date%
+
+
+[module/info]
+type = custom/text
+
+content = 
+
+click-left = termite -e htop
+
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = false
+format-spacing = 1
+
+label-open = 
+label-close = 
+label-separator = 
+
+menu-0-0 = 
+menu-0-1 = Lock
+menu-0-1-exec = light-locker-command -l
+menu-0-2 = Log Out
+menu-0-2-exec = bspc quit
+menu-0-3 = Reboot
+menu-0-3-exec = reboot
+menu-0-4 = Power Off
+menu-0-4-exec = poweroff

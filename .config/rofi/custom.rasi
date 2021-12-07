@@ -1,0 +1,53 @@
+* {
+	font: "t cherry 10";
+	background-color: #1f2226;
+	foreground-color: #c3cfd9;
+	text-color: #c3cfd9;
+}
+#window {
+	padding: 12px;
+	border: 2px;
+	border-color: #c3cfd9;
+}
+
+#inputbar {
+	margin: 0 0 6px;
+	children: [prompt, entry];
+}
+#entry {
+	margin: 0 0 0 6px;
+	background-color: #333840;
+}
+
+#listview {
+	lines: 8;
+	border: 1px 0 1px;
+	border-color: #c3cfd9;
+	spacing: 4px;
+	scrollbar: true;
+	margin: 0 0 6px;
+	padding: 8px 0;
+}
+#scrollbar {
+	margin: 0 0 0 1px;
+	background-color: #333840;
+	handle-color: #c3cfd9;
+	handle-width: 10px;
+}
+#element {
+	padding: 6px;
+	background-color: #292e33;
+}
+#element selected {
+	background-color: #333840;
+}
+
+#sidebar {
+	spacing: 4px;
+}
+#button {
+	background-color: #292e33;
+}
+#button selected {
+	background-color: #333840;
+}

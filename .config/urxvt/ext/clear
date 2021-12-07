@@ -1,0 +1,56 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+# Fix the odd urxvt behaviour for clearing the screen.
+#
+# When clearing the screen (Ctrl+L or “clear”), urxvt erases visible lines but
+# leaves the scrollback buffer unchanged, which is very confusing. There are two
+# consistent behaviours here:
+#	1) clearing everything (screen AND scrollback buffer)
+#	2) scrolling screen to the top like in VT terminals
+#
+# Usage: Activate this extension with:
+#	URxvt.perl-ext-common: …,clear
+#
+# This will intercept the Ctrl+L key binding and print some empty lines before
+# urxvt clears its screen, so as to preserve the previous contents.
+# Additionally, with Ctrl+Shift+L this extension will erase everything including
+# the scrollback buffer before urxvt’s clearing.
+
+sub on_key_press {
+	my ($self,$event,$keysym,$octets) = @_;
+	my $state = $event->{state};
+
+	# Disable extension on the alternate screen
+	$self->current_screen and return ();
+
+	# state bitmask: Shift = 1, Ctrl = 4, Alt = 8
+	# keysym: L = 76, l = 108
+	if ($state & 4 && ($keysym eq 108 || $keysym eq 76)) {
+		# Ctrl+Shift+L: clear everything
+		if ($state & 1) {
+			$self->cmd_parse("\ec");
+		}
+		# Ctrl+L: preserve visible lines by scrolling screen
+		else {
+			my $offset = 1;
+
+			# Increase offset to clear multiline prompt
+			for (my $i = $self->nrow - 1 ; $i >= 0 ; $i--) {
+				if ($self->ROW_is_longer($i)) {
+					$offset += 1;
+				}
+			}
+
+			my $n = $self->nrow - $offset;
+
+			for (my $i = 0 ; $i < $n ; $i++) {
+				$self->scr_add_lines("\n");
+			}
+		}
+	}
+
+	()
+}

@@ -1,0 +1,100 @@
+Xft.dpi: 96
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+Xcursor.theme:	bridge
+
+! ==================== !
+! Start Colours
+
+! Special
+*.foreground:	#c3ced9
+*.background:	#1f2226
+*.cursorColor:	#98a5b3
+
+! Black
+*.color0:		#292e33
+*.color8:		#475059
+
+! Red
+*.color1:		#b36262
+*.color9:		#d97777
+
+! Green
+*.color2:		#8ab362
+*.color10:		#a8d977
+
+! Yellow
+*.color3:		#f2bc85
+*.color11:		#f2d785
+
+! Blue
+*.color4:		#628ab3
+*.color12:		#77a8d9
+
+! Magenta
+*.color5:		#9374b3
+*.color13:		#b38dd9
+
+! Cyan
+*.color6:		#74b393
+*.color14:		#8dd9b3
+
+! White
+*.color7:		#98a5b3
+*.color15:		#c3ced9
+
+! End Colours
+! ==================== !
+
+! ==================== !
+! Start URxvt
+
+! Extensions
+URxvt.perl-lib:	.config/urxvt/ext/
+URxvt.perl-ext-common: default,matcher,clear,new-window
+
+! Font
+URxvt.font:	xft:Noto Sans Mono:size=9, \
+			xft:Noto Sans Mono CJK HK:size=9, \
+			xft:Noto Sans Mono CJK JP:size=9, \
+			xft:Noto Sans Mono CJK KR:size=9, \
+			xft:Noto Sans Mono CJK SC:size=9, \
+			xft:Noto Sans Mono CJK TC:size=9, \
+			xft:Noto Mono for Powerline:size=9, \
+			xft:Unifont:size=9
+
+! Scroll Buffer
+URxvt.saveLines:			5000
+URxvt.scrollTtyOutput:		false
+URxvt.scrollTtyKeypress:	true
+URxvt.scrollWithBuffer:		true
+
+! Scrollbar
+URxvt.scrollBar:		true
+URxvt.scrollstyle:		plain
+URxvt.scrollBar_right:	true
+URxvt.scrollColor:		#98a5b3
+
+! URLs
+URxvt.url-launcher:		xdg-open
+URxvt.matcher.button:	3
+
+! Keybindings
+URxvt.keysym.Shift-Control-C:	eval:selection_to_clipboard
+URxvt.keysym.Shift-Control-V:	eval:paste_clipboard
+URxvt.keysym.Shift-Control-T:	perl:new-window
+
+! Disable ISO 14755 mode
+URxvt.iso14755:		false
+URxvt.iso14755_52:	false
+
+! Disable printing the terminal contents when pressing PrintScreen
+URxvt.print-pipe:	"cat > /dev/null"
+
+! End URxvt
+! ==================== !

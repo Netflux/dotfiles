@@ -1,0 +1,9 @@
+configuration {
+	modi: "windowcd,drun,run";
+	terminal: "urxvt";
+	sidebar-mode: true;
+	show-icons: true;
+	columns: 3;
+}
+
+@theme "custom"
